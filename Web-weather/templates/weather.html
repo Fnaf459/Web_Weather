@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Погода в Ульяновске</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Погода в Ульяновске</h1>
+    <div class="weather-cards">
+        {% for weather in weather_data %}
+            <div class="weather-card">
+                <h2>{{ weather.location }}</h2>
+                <p><strong>Дата:</strong> {{ weather.date.strftime('%d-%m-%Y %H:%M') }}</p>
+                <p><strong>Температура:</strong> {{ weather.temperature }}°C</p>
+                <p><strong>Направление ветра:</strong> {{ weather.windDirection }}</p>
+                <p><strong>Скорость ветра:</strong> {{ weather.windSpeed }} м/с</p>
+                <p><strong>Влажность:</strong> {{ weather.humidity }}%</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
